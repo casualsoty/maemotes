@@ -1,0 +1,16 @@
+{
+  "id": "maemotes",
+  "title": "maemotes",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "authors": [
+    {
+      "name": "soty",
+      "discord": "soty"
+    }
+  ],
+  "esmodules": ["maemotes.js"]
+}

@@ -1,49 +1,27 @@
+/*  FUNCTIONS
+ */
+
 export const openMaemotes = _ => {
+  let buttons = '';
+
+  ['maegamba.png', 'maejam.png', 'maelmao.png', 'maelove.png', 'maeoopsie.png', 'maevil.png', 'maewhat.png', 'Maeyaya.gif', 'quemae.png', 'rosebedge.png', 'roseeyes.png', 'rosehmm.png', 'rosesmile.png', 'roseupside_down.png', 'roseweary.png'].forEach(artwork => {
+    buttons +=
+      '<button onclick="ChatMessage.create({ content: \'<img src=https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/' + artwork + ' style=border:0;width:64px; title=' + artwork.substring(0, artwork.length - 4) + '>\' });" ' +
+      'style="width: 78px" ' +
+      'title="' + artwork + '">' +
+      '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/' + artwork + '" ' +
+      'style="border: 0; width: 64px;">' +
+      '</button>';
+  });
+
   new Dialog({
-    buttons: {
-      one: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/maegamba.png" style="border: 0;">'
-      },
-      two: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/maejam.png" style="border: 0;">'
-      },
-      three: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/maelmao.png" style="border: 0;">'
-      },
-      four: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/maeoopsie.png" style="border: 0;">'
-      },
-      five: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/maevil.png" style="border: 0;">'
-      },
-      six: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/maewhat.png" style="border: 0;">'
-      },
-      seven: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/quemae.png" style="border: 0;">'
-      },
-      eight: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/rosebedge.png" style="border: 0;">'
-      },
-      nine: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/roseeyes.png" style="border: 0;">'
-      },
-      ten: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/rosehmm.png" style="border: 0;">'
-      },
-      eleven: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/rosesmile.png" style="border: 0;">'
-      },
-      twelve: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/roseupside_down.png" style="border: 0;">'
-      },
-      thirteen: {
-        icon: '<img src="https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/roseweary.png" style="border: 0;">'
-      }
-    },
+    buttons: {},
+    content: '<div style="align-content: space-between; display: flex; flex-wrap: wrap; height: 164px; justify-content: space-between; width: 606px;">' + buttons + '</div>',
     title: "Maemotes"
-  },
-  {
-    top: 1000
+  }, {
+    height: 210,
+    left: window.innerWidth - 622 - 13,
+    top: window.innerHeight - 210 - 144 - 3,
+    width: 622
   }).render(true);
 }

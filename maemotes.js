@@ -4,19 +4,6 @@
 let buttons = '';
 let token = '';
 
-/*  CLASSES
- */
-
-class MaemoteChatBubbles extends ChatBubbles {
-  constructor(...args) {
-    super(...args);
-  }
-
-  _getDuration() {
-    return 5000;
-  }
-}
-
 /*  FUNCTIONS
  */
 
@@ -62,6 +49,10 @@ Hooks.once('init', _ => {
 
 Hooks.on('changeSidebarTab', _ => {
   if (!document.getElementById('open-maemotes-button')) {
+
+    /*  1
+     */
+
     const FLEX = window.getComputedStyle(document.getElementsByClassName('control-buttons')[0]).flex.split(' ')[2];
 
     document.getElementsByClassName('control-buttons')[0].style.flex = '0 0 ' + (parseInt(FLEX.substring(0, FLEX.length - 2)) + 24) + 'px';
@@ -71,20 +62,23 @@ Hooks.on('changeSidebarTab', _ => {
       '<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>'
       '</svg>' +
       '</a>';
-    
-    document.getElementById('open-maemotes-button').addEventListener('click', _ => {
-      if (!token) {
-        fetch('https://api.sirv.com/v2/token', {
-          body: JSON.stringify({
-            "clientId": 'UvKYoTOfdlCClPyBnRqgPrL6ohE',
-            "clientSecret": 'Bv8hU0Vx8YkFnMd4Eu+8GQCmspKDK8zfBuhUHPk95bIRIF3aZQ/cvaSTH+AvDMZFGdMf2pfQ5uyrI0Ax4vYa6A=='
-          }),
-          headers: { 'content-type': 'application/json' },
-          method: 'POST'
-        }).then(r => r.json()).then(r => token = r.token);
 
-        setTimeout(token = '', 1200000);
-      }
+    /*  2
+     */
+
+    document.getElementById('open-maemotes-button').addEventListener('click', _ => {
+      // if (!token) {
+      //   fetch('https://api.sirv.com/v2/token', {
+      //     body: JSON.stringify({
+      //       "clientId": 'UvKYoTOfdlCClPyBnRqgPrL6ohE',
+      //       "clientSecret": 'Bv8hU0Vx8YkFnMd4Eu+8GQCmspKDK8zfBuhUHPk95bIRIF3aZQ/cvaSTH+AvDMZFGdMf2pfQ5uyrI0Ax4vYa6A=='
+      //     }),
+      //     headers: { 'content-type': 'application/json' },
+      //     method: 'POST'
+      //   }).then(r => r.json()).then(r => token = r.token);
+
+      //   setTimeout(token = '', 1200000);
+      // }
 
       [
         'maegamba.png',
@@ -111,7 +105,7 @@ Hooks.on('changeSidebarTab', _ => {
                 'speaker: ChatMessage.getSpeaker()' +
               '});' +
               'if (canvas.tokens.controlled[0] && game.settings.get(\'maemotes\', \'enableChatBubbles\')) {' +
-                'new MaemoteChatBubbles().broadcast(canvas.tokens.controlled[0], \'<img src=https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/' + artwork + ' style=border:0;width:64px;>\', );' +
+                'new ChatBubbles().broadcast(canvas.tokens.controlled[0], \'<img src=https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/' + artwork + ' style=border:0;width:64px;>\', );' +
               '}' +
               'if (game.settings.get(\'maemotes\', \'closeDialogWindow\')) {' +
                 'document.getElementsByClassName(\'close-maemotes-button\')[0].click()' +
@@ -124,13 +118,9 @@ Hooks.on('changeSidebarTab', _ => {
           '</button>';
       });
 
-      //console.log(token);
-      //console.log(getFolder('Maemotes'));
-
       new Dialog({
         buttons: { 'close-maemotes-button': _ },
         content:
-          '<script src="maemotes.js"></script>' +
           '<style>.close-maemotes-button { display: none; }</style>' +
           '<div style="align-content: space-between; display: flex; flex-wrap: wrap; justify-content: space-between;">' + buttons + '</div>' +
           '<div style="text-align: right;">🐸</div>',
@@ -148,7 +138,7 @@ Hooks.on('changeSidebarTab', _ => {
 //  TODOS:
 //    [X] Close Dialog Window setting
 //    [X] Enable Chat Bubbles setting
-//    [ ] Chat bubbles duration setting
+//    [ ] Chat Bubbles Duration setting
 //    [ ] Favourites
 //    [ ] File and folder uploader
 //    [ ] Search bar

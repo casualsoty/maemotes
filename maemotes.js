@@ -139,6 +139,6 @@ Hooks.on('changeSidebarTab', _ => {
 //    [X] Close Dialog Window setting
 //    [X] Enable Chat Bubbles setting
 //    [ ] Chat Bubbles Duration setting
+//    [ ] Emote uploader
 //    [ ] Favourites
-//    [ ] File and folder uploader
 //    [ ] Search bar

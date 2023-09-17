@@ -88,6 +88,20 @@ Hooks.once('init', _ => {
     type: Boolean
   });
 
+  game.settings.register('maemotes', 'chatBubblesDuration', {
+    config: true,
+    default: 2,
+    hint: 'Determine the length of time in seconds for which to display an emote chat bubble.',
+    name: 'Chat Bubbles Duration',
+    range: {
+      max: 20,
+      min: 1,
+      step: 1
+    },
+    scope: 'client',
+    type: Number
+  });
+
   game.settings.register('maemotes', 'displayDefaultEmotes', {
     config: true,
     default: true,
@@ -566,13 +580,25 @@ const getButton = file => {
   return '' +
     '<button ' +
       'onclick="' +
+        'class MaemoteChatBubbles extends ChatBubbles {' +
+          'constructor(...args) {' +
+            'super(...args);'+
+          '}' +
+
+          '_getDuration(html) {' +
+            'return game.settings.get(\'maemotes\', \'chatBubblesDuration\') * 1000;' +
+          '}' +
+        '}' +
+
         'ChatMessage.create({' +
           'content: \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px; title=' + file.split('/')[file.split('/').length - 1].split('.')[0] + '>\',' +
           'speaker: ChatMessage.getSpeaker()' +
         '});' +
+
         'if (canvas.tokens.controlled[0] && game.settings.get(\'maemotes\', \'enableChatBubbles\')) {' +
-          'new ChatBubbles().broadcast(canvas.tokens.controlled[0], \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px;>\');' +
+          'new MaemoteChatBubbles().broadcast(canvas.tokens.controlled[0], \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px;>\');' +
         '}' +
+
         'if (game.settings.get(\'maemotes\', \'closeDialogWindow\')) {' +
           'document.getElementsByClassName(\'close-maemotes-button\')[0].click()' +
         '};" ' +
@@ -588,7 +614,7 @@ const getButton = file => {
 //  TODOS:
 //    [X] Close Dialog Window setting
 //    [X] Enable Chat Bubbles setting
+//    [X] Chat Bubbles Duration setting
 //    [X] Custom emote uploader
-//    [ ] Chat Bubbles Duration setting
 //    [ ] Emote favourites
 //    [ ] Search bar

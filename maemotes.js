@@ -1,4 +1,4 @@
-/*  EVENT LISTENERS
+/*  MAIN
  */
 
 Hooks.on('changeSidebarTab', _ => {
@@ -25,45 +25,29 @@ Hooks.on('changeSidebarTab', _ => {
       new Dialog({
         buttons: { 'close-maemotes-button': _ },
         content:
+          '<script ' +
+            'src="modules/maemotes/scripts/getButton.js" ' +
+            'type="text/javascript"></script>' +
+          '<script ' +
+            'src="modules/maemotes/scripts/renderEmotes.js" ' +
+            'type="text/javascript"></script>' +
+          '<input ' +
+            'id="maemotes-input"' +
+            'oninput="renderEmotes();"' +
+            'placeholder="Find the perfect emote"' +
+            'style="margin: 0 4px 8px 4px; width: 214px;"' +
+            'type="text">' +
           '<div ' +
             'id="maemotes" ' +
-            'style="align-content: space-between; display: flex; flex-wrap: wrap; justify-content: space-between;"></div>' +
+            'style="display: flex; flex-wrap: wrap;"></div>' +
           '<div style="text-align: center;">You can add more of your own emotes in the settings! 🐸</div>',
-        render: _ => {
-          if (game.settings.get('maemotes', 'displayDefaultEmotes')) {
-            [
-              'maegamba.png',
-              'maejam.png',
-              'maelmao.png',
-              'maelove.png',
-              'maeoopsie.png',
-              'maevil.png',
-              'maewhat.png',
-              'Maeyaya.gif',
-              'quemae.png',
-              'rosebedge.png',
-              'roseeyes.png',
-              'rosehmm.png',
-              'rosesmile.png',
-              'roseupside_down.png',
-              'roseweary.png'
-            ].forEach(artwork => document.getElementById('maemotes').innerHTML += getButton('modules/maemotes/artwork/default/' + artwork));
-          }
-
-          if (game.settings.get('maemotes', 'displayCustomEmotes')) {
-            for (let i = 1; i < 3; i++) {
-              if (game.settings.get('maemotes', 'customEmote' + i)) {
-                document.getElementById('maemotes').innerHTML += getButton(game.settings.get('maemotes', 'customEmote' + i))
-              }
-            }
-          }
-        },
+        render: _ => renderEmotes(),
         title: "Maemotes",
       }, {
-        height: 260,  /* (66 * 3 + 8 * 2) + 30 + (8 * 2) */
-        left: window.innerWidth - 236 - 310,
-        top: window.innerHeight - 260 - 12 - 4,
-        width: 236    /* (66 * 3 + 8 * 2) + (8 * 2) + 6 */
+        height: 294,  /* 30 + 8 + (26 + 8) + (66 * 3 + 8 * 2) + 8 */
+        left: window.innerWidth - 244 - 310,
+        top: window.innerHeight - 294 - 12 - 4,
+        width: 244    /* (8 * 2) + (66 * 3 + 8 * 3) + 6 */
       }).render(true);
     });
   }
@@ -573,47 +557,10 @@ Hooks.once('ready', _ => {
   });
 });
 
-/*  FUNCTIONS
- */
-
-const getButton = file => {
-  return '' +
-    '<button ' +
-      'onclick="' +
-        'class MaemoteChatBubbles extends ChatBubbles {' +
-          'constructor(...args) {' +
-            'super(...args);'+
-          '}' +
-
-          '_getDuration(html) {' +
-            'return game.settings.get(\'maemotes\', \'chatBubblesDuration\') * 1000;' +
-          '}' +
-        '}' +
-
-        'ChatMessage.create({' +
-          'content: \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px; title=' + file.split('/')[file.split('/').length - 1].split('.')[0] + '>\',' +
-          'speaker: ChatMessage.getSpeaker()' +
-        '});' +
-
-        'if (canvas.tokens.controlled[0] && game.settings.get(\'maemotes\', \'enableChatBubbles\')) {' +
-          'new MaemoteChatBubbles().broadcast(canvas.tokens.controlled[0], \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px;>\');' +
-        '}' +
-
-        'if (game.settings.get(\'maemotes\', \'closeDialogWindow\')) {' +
-          'document.getElementsByClassName(\'close-maemotes-button\')[0].click()' +
-        '};" ' +
-      'style="height: 66px; margin: 0 0 8px 0; padding: 0; width: 66px">' +
-      '<img ' +
-        'src="' + file + '" ' +
-        'style="border: 0; max-height: 64px; max-width: 64px;" ' +
-        'title="' + file.split('/')[file.split('/').length - 1].split('.')[0] + '">' +
-    '</button>';
-}
-
 //  TODOS:
 //    [X] Close Dialog Window setting
 //    [X] Enable Chat Bubbles setting
 //    [X] Chat Bubbles Duration setting
 //    [X] Custom emote uploader
+//    [X] Search bar
 //    [ ] Emote favourites
-//    [ ] Search bar

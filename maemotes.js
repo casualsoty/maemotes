@@ -602,8 +602,7 @@ const getButton = file => {
         'if (game.settings.get(\'maemotes\', \'closeDialogWindow\')) {' +
           'document.getElementsByClassName(\'close-maemotes-button\')[0].click()' +
         '};" ' +
-      'style="height: 66px; margin: 0 0 8px 0; padding: 0; width: 66px" ' +
-      'title="">' +
+      'style="height: 66px; margin: 0 0 8px 0; padding: 0; width: 66px">' +
       '<img ' +
         'src="' + file + '" ' +
         'style="border: 0; max-height: 64px; max-width: 64px;" ' +

@@ -3,7 +3,7 @@ class MaemoteChatBubbles extends ChatBubbles {
     super(...args);
   }
 
-  _getDuration(html) {
+  _getDuration() {
     return game.settings.get('maemotes', 'chatBubblesDuration') * 1000;
   }
 }

@@ -4,7 +4,6 @@ A simple Foundry VTT module for custom chat emotes support.
 * [Installation](#installation)
 * [Usage](#usage)
   * [Documentation](#documentation)
-  * [Example](#example)
   * [Settings](#settings)
     * [Close Dialog Window](#close-dialog-window)
     * [Enable Chat Bubbles](#enable-chat-bubbles)
@@ -21,7 +20,13 @@ https://raw.githubusercontent.com/casualsoty/maemotes/main/module.json
 ```
 ## Usage
 ### Documentation
-### Example
+Open the emote dialog window by clicking the smiley button above the chat.
+![0](https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/readme/0.png)
+
+Upload more of your own custom emotes in the settings.
+![1](https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/readme/1.png)
+![2](https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/readme/2.png)
+![3](https://raw.githubusercontent.com/casualsoty/maemotes/main/artwork/readme/3.png)
 ### Settings
 #### Close Dialog Window
 Configure whether or not the dialog window will be closed after sending an emote.

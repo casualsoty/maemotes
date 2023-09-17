@@ -2,16 +2,6 @@ const getButton = file => {
   return '' +
     '<button ' +
       'onclick="' +
-        'class MaemoteChatBubbles extends ChatBubbles {' +
-          'constructor(...args) {' +
-            'super(...args);'+
-          '}' +
-
-          '_getDuration(html) {' +
-            'return game.settings.get(\'maemotes\', \'chatBubblesDuration\') * 1000;' +
-          '}' +
-        '}' +
-
         'ChatMessage.create({' +
           'content: \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px; title=' + file.split('/')[file.split('/').length - 1].split('.')[0] + '>\',' +
           'speaker: ChatMessage.getSpeaker()' +

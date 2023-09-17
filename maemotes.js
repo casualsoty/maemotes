@@ -1,3 +1,18 @@
+/*  INITIALIZATIONS
+ */
+
+let dialog = '';
+let scripts = '' +
+  '<script ' +
+    'src="modules/maemotes/scripts/getButton.js" ' +
+    'type="text/javascript"></script>' +
+  '<script ' +
+    'src="modules/maemotes/scripts/MaemoteChatBubbles.js" ' +
+    'type="text/javascript"></script>' +
+  '<script ' +
+    'src="modules/maemotes/scripts/renderEmotes.js" ' +
+    'type="text/javascript"></script>';
+
 /*  MAIN
  */
 
@@ -24,15 +39,16 @@ Hooks.on('changeSidebarTab', _ => {
      */
 
     document.getElementById('open-maemotes-button').addEventListener('click', _ => {
-      new Dialog({
+      let isDialogOpen = 0;
+
+      if (dialog) {
+        dialog.close();
+        isDialogOpen = 1;
+      }
+
+      dialog = new Dialog({
         buttons: { 'close-maemotes-button': _ },
         content:
-          '<script ' +
-            'src="modules/maemotes/scripts/getButton.js" ' +
-            'type="text/javascript"></script>' +
-          '<script ' +
-            'src="modules/maemotes/scripts/renderEmotes.js" ' +
-            'type="text/javascript"></script>' +
           '<input ' +
             'id="maemotes-input"' +
             'oninput="renderEmotes();"' +
@@ -42,15 +58,20 @@ Hooks.on('changeSidebarTab', _ => {
           '<div ' +
             'id="maemotes" ' +
             'style="display: flex; flex-wrap: wrap;"></div>' +
-          '<div style="text-align: center;">You can add more of your own emotes in the settings! 🐸</div>',
-        render: _ => renderEmotes(),
+          '<div style="text-align: center;">You can add more of your own emotes in the settings! 🐸</div>' +
+          scripts,
         title: "Maemotes",
+        close: _ => dialog = '',
+        render: _ => renderEmotes(),
       }, {
         height: 294,  /* 30 + 8 + (26 + 8) + (66 * 3 + 8 * 2) + 8 */
         left: window.innerWidth - 244 - 310,
         top: window.innerHeight - 294 - 12 - 4,
         width: 244    /* (8 * 2) + (66 * 3 + 8 * 3) + 6 */
-      }).render(true);
+      });
+      scripts = '';
+
+      setTimeout(_ => dialog.render(true), isDialogOpen * 250);
     });
   }
 });

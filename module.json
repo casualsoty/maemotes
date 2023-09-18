@@ -7,8 +7,9 @@
     "minimum": "11",
     "verified": "11"
   },
+  "download": "https://github.com/casualsoty/maemotes/releases/download/1.0.1/module.zip",
   "esmodules": ["maemotes.js"],
   "id": "maemotes",
   "title": "Maemotes",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

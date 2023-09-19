@@ -7,9 +7,17 @@
     "minimum": "11",
     "verified": "11"
   },
-  "download": "https://github.com/casualsoty/maemotes/releases/download/v1.0.2/module.zip",
+  "download": "https://github.com/casualsoty/maemotes/releases/latest/download/module.zip",
   "esmodules": ["maemotes.js"],
   "id": "maemotes",
+  "languages": [{
+    "lang": "en",
+    "name": "English",
+    "path": "lang/en.json"
+  }],
+  "manifest": "https://github.com/casualsoty/maemotes/releases/latest/download/module.json",
+  "readme": "https://github.com/casualsoty/maemotes/blob/main/README.md",
   "title": "Maemotes",
-  "version": "1.0.2"
+  "url": "https://github.com/casualsoty/maemotes",
+  "version": "1.0.3"
 }

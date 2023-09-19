@@ -1,9 +1,11 @@
 const getButton = file => {
+  const TITLE = file.split('/')[file.split('/').length - 1].split('.')[0];
+
   return '' +
     '<button ' +
       'onclick="' +
         'ChatMessage.create({' +
-          'content: \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px; title=' + file.split('/')[file.split('/').length - 1].split('.')[0] + '>\',' +
+          'content: \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px; title=' + TITLE + '>\',' +
           'speaker: ChatMessage.getSpeaker()' +
         '});' +
 
@@ -18,6 +20,6 @@ const getButton = file => {
       '<img ' +
         'src="' + file + '" ' +
         'style="border: 0; max-height: 64px; max-width: 64px;" ' +
-        'title="' + file.split('/')[file.split('/').length - 1].split('.')[0] + '">' +
+        'title="' + TITLE + '">' +
     '</button>';
 }

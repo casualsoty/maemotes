@@ -4,13 +4,13 @@
 let dialog = '';
 let scripts = '' +
   '<script ' +
-    'src="modules/maemotes/scripts/getButton.js" ' +
+    'src="modules/maemotes/scripts/get-button.js" ' +
     'type="text/javascript"></script>' +
   '<script ' +
-    'src="modules/maemotes/scripts/MaemoteChatBubbles.js" ' +
+    'src="modules/maemotes/scripts/maemote-chat-bubbles.js" ' +
     'type="text/javascript"></script>' +
   '<script ' +
-    'src="modules/maemotes/scripts/renderEmotes.js" ' +
+    'src="modules/maemotes/scripts/render-emotes.js" ' +
     'type="text/javascript"></script>';
 
 /*  MAIN

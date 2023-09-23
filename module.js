@@ -44,6 +44,7 @@ Hooks.on('changeSidebarTab', _ => {
      */
 
     document.getElementById('open-maemotes-button').addEventListener('click', _ => {
+      const FOOTER = game.user.role > 2 ? game.i18n.localize('MAEMOTES.Dialog.FooterGamemaster') : game.i18n.localize('MAEMOTES.Dialog.FooterPlayer');
       let isDialogOpen = 0;
 
       if (dialog) {
@@ -63,7 +64,7 @@ Hooks.on('changeSidebarTab', _ => {
           '<div ' +
             'id="maemotes" ' +
             'style="display: flex; flex-wrap: wrap;"></div>' +
-          '<div style="text-align: center;">' + game.i18n.localize('MAEMOTES.Dialog.Footer') + '</div>' +
+          '<div style="text-align: center;">' + FOOTER + '</div>' +
           scripts,
         title: game.i18n.localize('MAEMOTES.Dialog.Title'),
         close: _ => dialog = '',

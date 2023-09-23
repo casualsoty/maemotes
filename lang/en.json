@@ -3,7 +3,8 @@
     "OpenMaemotesButtonTitle": "Open Maemotes",
 
     "Dialog": {
-      "Footer": "You can add more of your own emotes in the settings! 🐸",
+      "FooterGamemaster": "You can add more of your own emotes in the settings! 🐸",
+      "FooterPlayer": "🐸",
       "InputPlaceholder": "Find the perfect emote",
       "Title": "Maemotes"
     },

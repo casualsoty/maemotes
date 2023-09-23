@@ -18,10 +18,6 @@ let scripts = '' +
 
 Hooks.on('changeSidebarTab', _ => {
   if (!document.getElementById('open-maemotes-button')) {
-
-    /*  1
-     */
-
     document.getElementById('chat-controls').innerHTML +=
       '<style>.close-maemotes-button { display: none; }</style>' +
       '<a ' +
@@ -40,11 +36,8 @@ Hooks.on('changeSidebarTab', _ => {
         '</svg>' +
       '</a>';
 
-    /*  2
-     */
-
     document.getElementById('open-maemotes-button').addEventListener('click', _ => {
-      const FOOTER = game.user.role > 2 ? game.i18n.localize('MAEMOTES.Dialog.FooterGamemaster') : game.i18n.localize('MAEMOTES.Dialog.FooterPlayer');
+      const FOOTER = game.user.isGM ? game.i18n.localize('MAEMOTES.Dialog.FooterGamemaster') : game.i18n.localize('MAEMOTES.Dialog.FooterPlayer');
       let isDialogOpen = 0;
 
       if (dialog) {

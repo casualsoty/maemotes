@@ -8,6 +8,7 @@ A simple Foundry VTT module for custom chat emotes support.
     * [Close Dialog Window](#close-dialog-window)
     * [Enable Chat Bubbles](#enable-chat-bubbles)
     * [Chat Bubbles Duration](#chat-bubbles-duration)
+    * []()
     * [Display Default Emotes](#display-default-emotes)
     * [Display Custom Emotes](#display-custom-emotes)
     * [Custom Emote #x](#custom-emote-1–50)
@@ -38,6 +39,10 @@ Configure whether or not chat bubbles will be displayed above Tokens for emote t
 `default: true`
 #### Chat Bubbles Duration
 Determine the length of time in seconds for which to display an emote chat bubble.
+
+`default: 2`
+#### Alternative Button Icon
+Configure whether or not to display an alternative button icon in the chat control buttons.
 
 `default: 2`
 #### Display Default Emotes

@@ -44,7 +44,7 @@ Determine the length of time in seconds for which to display an emote chat bubbl
 #### Alternative Button Icon
 Configure whether or not to display an alternative button icon in the chat control buttons.
 
-`default: 2`
+`default: false`
 #### Display Default Emotes
 Configure whether or not default emotes will be displayed in the dialog window.
 

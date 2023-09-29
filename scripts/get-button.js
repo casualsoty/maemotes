@@ -5,7 +5,7 @@ const getButton = file => {
     '<button ' +
       'onclick="' +
         'ChatMessage.create({' +
-          'content: \'<img src=' + file + ' style=border:0;max-height:64px;max-width:64px; title=' + TITLE + '>\',' +
+          'content: \'<img data-tooltip=' + TITLE + ' src=' + file + ' style=border:0;max-height:64px;max-width:64px;>\',' +
           'speaker: ChatMessage.getSpeaker()' +
         '});' +
 

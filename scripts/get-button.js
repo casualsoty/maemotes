@@ -18,8 +18,8 @@ const getButton = file => {
         '};" ' +
       'style="height: 66px; margin: 0 4px 8px 4px; padding: 0; width: 66px">' +
       '<img ' +
+        'data-tooltip="' + TITLE + '" ' +
         'src="' + file + '" ' +
-        'style="border: 0; max-height: 64px; max-width: 64px;" ' +
-        'title="' + TITLE + '">' +
+        'style="border: 0; max-height: 64px; max-width: 64px;">' +
     '</button>';
 }

@@ -22,18 +22,10 @@ Hooks.on('changeSidebarTab', _ => {
       '<style>.close-maemotes-button { display: none; }</style>' +
       '<a ' +
         'class="chat-control-icon" ' +
+        'data-tooltip="' + game.i18n.localize('MAEMOTES.OpenMaemotesButtonTitle') + '"' +
         'id="open-maemotes-button" ' +
-        'title="' + game.i18n.localize('MAEMOTES.OpenMaemotesButtonTitle') + '">' +
-        '<svg ' +
-          'class="bi bi-emoji-smile-fill" ' +
-          'fill="currentColor" ' +
-          'height="21" ' +
-          'style="position: relative; top: 3px;" ' +
-          'viewBox="0 0 16 16" ' +
-          'width="21" ' +
-          'xmlns="http://www.w3.org/2000/svg">' +
-          '<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>'
-        '</svg>' +
+        'style="align-items: center; display: flex; font-size: 20px;">' +
+        '<i class="' + (game.settings.get('maemotes', 'alternativeButtonIcon') ? 'fa-frog' : 'fa-face-smile') + ' fa"></i>'
       '</a>';
 
     document.getElementById('open-maemotes-button').addEventListener('click', _ => {
@@ -72,6 +64,8 @@ Hooks.on('changeSidebarTab', _ => {
 
       setTimeout(_ => dialog.render(true), isDialogOpen * 250);
     });
+  } else {
+    $('#open-maemotes-button i').removeClass(['fa-face-smile', 'fa-frog']).addClass(game.settings.get('maemotes', 'alternativeButtonIcon') ? 'fa-frog' : 'fa-face-smile');
   }
 });
 
@@ -106,6 +100,15 @@ Hooks.once('init', _ => {
     },
     scope: 'client',
     type: Number
+  });
+
+  game.settings.register('maemotes', 'alternativeButtonIcon', {
+    config: true,
+    default: false,
+    hint: game.i18n.localize('MAEMOTES.Settings.AlternativeButtonIcon.Hint'),
+    name: game.i18n.localize('MAEMOTES.Settings.AlternativeButtonIcon.Name'),
+    scope: 'client',
+    type: Boolean
   });
 
   game.settings.register('maemotes', 'displayDefaultEmotes', {

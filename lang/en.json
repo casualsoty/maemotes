@@ -25,6 +25,11 @@
         "Name": "Chat Bubbles Duration"
       },
 
+      "AlternativeButtonIcon": {
+        "Hint": "Configure whether or not to display an alternative button icon in the chat control buttons.",
+        "Name": "Alternative Button Icon"
+      },
+
       "DisplayDefaultEmotes": {
         "Hint": "Configure whether or not default emotes will be displayed in the dialog window.",
         "Name": "Display Default Emotes"

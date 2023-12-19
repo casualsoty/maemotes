@@ -2,7 +2,7 @@
  */
 
 let dialog = '';
-let scripts = '' +
+let scripts =
   '<script ' +
     'src="modules/maemotes/scripts/get-button.js" ' +
     'type="text/javascript"></script>' +
@@ -11,7 +11,10 @@ let scripts = '' +
     'type="text/javascript"></script>' +
   '<script ' +
     'src="modules/maemotes/scripts/render-emotes.js" ' +
-    'type="text/javascript"></script>';
+    'type="text/javascript"></script>' +
+    '<script ' +
+      'src="modules/maemotes/scripts/render-layout.js" ' +
+      'type="text/javascript"></script>';
 
 /*  MAIN
  */
@@ -19,12 +22,13 @@ let scripts = '' +
 Hooks.on('changeSidebarTab', _ => {
   if (!document.getElementById('open-maemotes-button')) {
     document.getElementById('chat-controls').innerHTML +=
-      '<style>.close-maemotes-button { display: none; }</style>' +
+      '<link ' +
+        'href="modules/maemotes/style.css" ' +
+        'rel="stylesheet">' +
       '<a ' +
         'class="chat-control-icon" ' +
         'data-tooltip="' + game.i18n.localize('MAEMOTES.OpenMaemotesButtonTitle') + '"' +
-        'id="open-maemotes-button" ' +
-        'style="align-items: center; display: flex; font-size: 20px;">' +
+        'id="open-maemotes-button">' +
         '<i class="' + (game.settings.get('maemotes', 'alternativeButtonIcon') ? 'fa-frog' : 'fa-face-smile') + ' fa"></i>'
       '</a>';
 
@@ -40,20 +44,22 @@ Hooks.on('changeSidebarTab', _ => {
       dialog = new Dialog({
         buttons: { 'close-maemotes-button': _ },
         content:
+          '<div class="seasonal-layout-1"></div>' +
           '<input ' +
             'id="maemotes-input" ' +
             'oninput="renderEmotes();" ' +
             'placeholder="' + game.i18n.localize('MAEMOTES.Dialog.InputPlaceholder') + '" ' +
-            'style="margin: 0 4px 8px 4px; width: 214px;" ' +
             'type="text">' +
-          '<div ' +
-            'id="maemotes" ' +
-            'style="display: flex; flex-wrap: wrap;"></div>' +
-          '<div style="text-align: center;">' + FOOTER + '</div>' +
+          '<div id="maemotes"></div>' +
+          '<div id="footer">' + FOOTER + '</div>' +
+          '<div class="seasonal-layout-1"></div>' +
           scripts,
         title: game.i18n.localize('MAEMOTES.Dialog.Title'),
         close: _ => dialog = '',
-        render: _ => renderEmotes(),
+        render: _ => {
+          renderEmotes();
+          renderLayout();
+        },
       }, {
         height: 294,  /* 30 + 8 + (26 + 8) + (66 * 3 + 8 * 2) + 8 */
         left: window.innerWidth - 244 - 310,
@@ -109,6 +115,19 @@ Hooks.once('init', _ => {
     name: game.i18n.localize('MAEMOTES.Settings.AlternativeButtonIcon.Name'),
     scope: 'client',
     type: Boolean
+  });
+
+  game.settings.register('maemotes', 'alternativeSeasonalLayout', {
+    choices: {
+      'None': 'MAEMOTES.Settings.AlternativeSeasonalLayout.None',
+      'Winter': 'MAEMOTES.Settings.AlternativeSeasonalLayout.Winter'
+    },
+    config: true,
+    default: 'None',
+    hint: game.i18n.localize('MAEMOTES.Settings.AlternativeSeasonalLayout.Hint'),
+    name: game.i18n.localize('MAEMOTES.Settings.AlternativeSeasonalLayout.Name'),
+    scope: 'client',
+    type: String
   });
 
   game.settings.register('maemotes', 'displayDefaultEmotes', {

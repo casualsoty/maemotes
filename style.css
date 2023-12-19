@@ -1,0 +1,21 @@
+/*  IDS
+ */
+
+#footer               { text-align: center; }
+#maemotes             { display: flex;
+                        flex-wrap: wrap; }
+#maemotes-input       { margin: 0 4px 8px 4px;
+                        width: 214px; }
+#open-maemotes-button { align-items: center;
+                        display: flex;
+                        font-size: 20px; }
+
+/*  CLASSES
+ */
+
+.close-maemotes-button  { display: none; }
+.winter-1               { background-image: url("../maemotes/artwork/default/christmas-1.gif");
+                          background-size: cover;
+                          height: 65px;
+                          margin: -12px 0 0 -12px;
+                          width: calc(100% + 32px); }

@@ -26,9 +26,7 @@
       },
       "AlternativeSeasonalLayout": {
         "Hint": "Configure whether or not to display an alternative seasonal layout in the in the dialog window.",
-        "Name": "Alternative Seasonal Layout",
-        "None": "None",
-        "Winter": "Winter"
+        "Name": "Alternative Seasonal Layout"
       },
       "DisplayDefaultEmotes": {
         "Hint": "Configure whether or not default emotes will be displayed in the dialog window.",

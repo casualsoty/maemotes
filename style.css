@@ -13,9 +13,14 @@
 /*  CLASSES
  */
 
-.close-maemotes-button  { display: none; }
-.winter-1               { background-image: url("../maemotes/artwork/default/christmas-1.gif");
-                          background-size: cover;
-                          height: 65px;
-                          margin: -12px 0 0 -12px;
-                          width: calc(100% + 32px); }
+.close-maemotes-button    { display: none; }
+.winter-0                 { background: url("../maemotes/artwork/default/winter/winter-0.jpg") !important;
+                            color: #eee !important;
+                            text-shadow: 1px 1px 1px #000; }
+.winter-0 #maemotes-input { background-color: #dad8cc; }
+.winter-1                 { background-image: url("../maemotes/artwork/default/winter/winter-1.gif");
+                            height: calc(100% - 30px);
+                            margin: -8px 0 0 -8px;
+                            pointer-events: none;
+                            position: absolute;
+                            width: 100%; }

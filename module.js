@@ -12,9 +12,23 @@ let scripts =
   '<script ' +
     'src="modules/maemotes/scripts/render-emotes.js" ' +
     'type="text/javascript"></script>' +
-    '<script ' +
-      'src="modules/maemotes/scripts/render-layout.js" ' +
-      'type="text/javascript"></script>';
+  '<script ' +
+    'src="modules/maemotes/scripts/render-layout.js" ' +
+    'type="text/javascript"></script>';
+
+/*  FUNCTIONS
+ */
+
+const getSeasonalEmote = _ => {
+  if (game.settings.get('maemotes', 'alternativeSeasonalLayout')) {
+    if (new Date().getMonth() == 0 || new Date().getMonth() == 11) {
+      return '🎄 ';
+    }
+  }
+
+  return '';
+}
+
 
 /*  MAIN
  */
@@ -52,13 +66,12 @@ Hooks.on('changeSidebarTab', _ => {
             'type="text">' +
           '<div id="maemotes"></div>' +
           '<div id="footer">' + FOOTER + '</div>' +
-          '<div class="seasonal-layout-1"></div>' +
           scripts,
-        title: game.i18n.localize('MAEMOTES.Dialog.Title'),
+        title: getSeasonalEmote() + game.i18n.localize('MAEMOTES.Dialog.Title') + ' ' + getSeasonalEmote(),
         close: _ => dialog = '',
         render: _ => {
           renderEmotes();
-          renderLayout();
+          renderLayout(dialog.appId);
         },
       }, {
         height: 294,  /* 30 + 8 + (26 + 8) + (66 * 3 + 8 * 2) + 8 */
@@ -118,16 +131,12 @@ Hooks.once('init', _ => {
   });
 
   game.settings.register('maemotes', 'alternativeSeasonalLayout', {
-    choices: {
-      'None': 'MAEMOTES.Settings.AlternativeSeasonalLayout.None',
-      'Winter': 'MAEMOTES.Settings.AlternativeSeasonalLayout.Winter'
-    },
     config: true,
-    default: 'None',
+    default: true,
     hint: game.i18n.localize('MAEMOTES.Settings.AlternativeSeasonalLayout.Hint'),
     name: game.i18n.localize('MAEMOTES.Settings.AlternativeSeasonalLayout.Name'),
     scope: 'client',
-    type: String
+    type: Boolean
   });
 
   game.settings.register('maemotes', 'displayDefaultEmotes', {

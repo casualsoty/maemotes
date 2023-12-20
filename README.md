@@ -44,7 +44,7 @@ Determine the length of time in seconds for which to display an emote chat bubbl
 #### Alternative Button Icon
 Configure whether or not to display an alternative button icon in the chat control buttons.
 
-`default: 2`
+`default: true`
 #### Alternative Seasonal Layout
 Configure whether or not to display an alternative seasonal layout in the dialog window.
 

@@ -9,6 +9,7 @@ A simple Foundry VTT module for custom chat emotes support.
     * [Enable Chat Bubbles](#enable-chat-bubbles)
     * [Chat Bubbles Duration](#chat-bubbles-duration)
     * [Alternative Button Icon](#alternative-button-icon)
+    * [Alternative Seasonal Layout](#alternative-seasonal-layout)
     * [Display Default Emotes](#display-default-emotes)
     * [Display Custom Emotes](#display-custom-emotes)
     * [Custom Emote #x](#custom-emote-1–50)

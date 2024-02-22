@@ -13,14 +13,59 @@
 /*  CLASSES
  */
 
-.close-maemotes-button    { display: none; }
-.winter-0                 { background: url("../maemotes/artwork/default/winter/winter-0.jpg") !important;
-                            color: #eee !important;
-                            text-shadow: 1px 1px 1px #000; }
-.winter-0 #maemotes-input { background-color: #dad8cc; }
-.winter-1                 { background-image: url("../maemotes/artwork/default/winter/winter-1.gif");
-                            height: calc(100% - 30px);
-                            margin: -8px 0 0 -8px;
-                            pointer-events: none;
-                            position: absolute;
-                            width: 100%; }
+.close-maemotes-button        { display: none; }
+.easter-0                     { background: url("../maemotes/artwork/default/easter/easter-0.jpg") !important;
+                                color: #eee !important;
+                                text-shadow: 1px 1px 1px #000; }
+.easter-0 #maemotes-input     { background-color: #dad8cc; }
+.easter-1                     { background-image: url("../maemotes/artwork/default/easter/easter-1.gif");
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                height: calc(100% - 30px);
+                                margin: -8px 0 0 -8px;
+                                opacity: .5;
+                                pointer-events: none;
+                                position: absolute;
+                                width: 100%; }
+.halloween-0                  { background: url("../maemotes/artwork/default/halloween/halloween-0.jpg") !important;
+                                color: #eee !important;
+                                text-shadow: 1px 1px 1px #000; }
+.halloween-0 #maemotes-input  { background-color: #dad8cc; }
+.halloween-1                  { background-image: url("../maemotes/artwork/default/halloween/halloween-1.gif");
+                                background-position: bottom;
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                height: calc(100% - 30px);
+                                margin: -8px 0 0 -8px;
+                                opacity: .5;
+                                pointer-events: none;
+                                position: absolute;
+                                width: 100%; }
+.summer-0                     { background: url("../maemotes/artwork/default/summer/summer-0.jpg") !important;
+                                color: #eee !important;
+                                text-shadow: 1px 1px 1px #000; }
+.summer-0 #maemotes-input     { background-color: #dad8cc; }
+.summer-1                     { background-image: url("../maemotes/artwork/default/summer/summer-1.gif");
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                height: calc(100% - 30px);
+                                margin: -8px 0 0 -8px;
+                                opacity: .5;
+                                pointer-events: none;
+                                position: absolute;
+                                width: 100%; }
+.winter-0                     { background: url("../maemotes/artwork/default/winter/winter-0.jpg") !important;
+                                color: #eee !important;
+                                text-shadow: 1px 1px 1px #000; }
+.winter-0 #maemotes-input     { background-color: #dad8cc; }
+.winter-1                     { background-image: url("../maemotes/artwork/default/winter/winter-1.gif");
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                height: calc(100% - 30px);
+                                margin: -8px 0 0 -8px;
+                                opacity: .5;
+                                pointer-events: none;
+                                position: absolute;
+                                width: 100%; }
